@@ -19,7 +19,7 @@ public interface PollRepository extends JpaRepository<Poll, Long> {
 	
 	long countByCreatedBy(Long userId);
 	
-	List<Poll> findByIdIN(List<Long> pollIds);
+	List<Poll> findByIdIn(List<Long> pollIds);
 	
 	List<Poll> findByIdIn(List<Long> pollIds, Sort sort);
 }
