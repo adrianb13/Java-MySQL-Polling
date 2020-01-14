@@ -25,7 +25,7 @@ public class ChoiceResponse {
 		return voteCount;
 	}
 	
-	public void setVoteCount(Long voteCount) {
+	public void setVoteCount(long voteCount) {
 		this.voteCount = voteCount;
 	}
 }

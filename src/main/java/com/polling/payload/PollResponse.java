@@ -66,7 +66,7 @@ public class PollResponse {
 		this.expirationDateTime = expirationDateTime;
 	}
 	
-	public Boolean getExpried() {
+	public Boolean getExpired() {
 		return isExpired;
 	}
 	

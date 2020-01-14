@@ -6,7 +6,7 @@ public class VoteRequest {
 	@NotNull
 	private Long choiceId;
 	
-	public Long getChoice() {
+	public Long getChoiceId() {
 		return choiceId;
 	}
 	

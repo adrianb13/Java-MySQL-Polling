@@ -13,6 +13,15 @@ public class PagedResponse<T> {
 	public PagedResponse() {
 	}
 	
+	public PagedResponse(List<T> content, int page, int size, Long totalElements, int totalPages, boolean last) {
+		this.content = content;
+		this.page = page;
+		this.size = size;
+		this.totalElements = totalElements;
+		this.totalPages = totalPages;
+		this.last = last;
+	}
+	
 	public List<T> getContent(){
 		return content;
 	}

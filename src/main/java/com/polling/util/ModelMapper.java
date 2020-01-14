@@ -15,7 +15,7 @@ public class ModelMapper {
 	public static PollResponse mapPollToPollResponse(Poll poll, Map<Long, Long> choiceVotesMap, User creator, Long userVote) {
 		PollResponse pollResponse = new PollResponse();
 		pollResponse.setId(poll.getId());
-		pollResponse.setQuestion(poll.getQuestions());
+		pollResponse.setQuestion(poll.getQuestion());
 		pollResponse.setCreationDateTime(poll.getCreatedAt());
 		pollResponse.setExpirationDateTime(poll.getExpirationDateTime());
 		Instant now = Instant.now();
@@ -29,7 +29,7 @@ public class ModelMapper {
 			if(choiceVotesMap.containsKey(choice.getId())) {
 				choiceResponse.setVoteCount(choiceVotesMap.get(choice.getId()));
 			} else {
-				choiceResponse.setVoteCount((long) 0);
+				choiceResponse.setVoteCount(0);
 			}
 			return choiceResponse;
 		}).collect(Collectors.toList());

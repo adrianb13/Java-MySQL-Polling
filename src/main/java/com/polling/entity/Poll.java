@@ -55,7 +55,7 @@ public class Poll extends UserDateAudit {
 		this.id = id;
 	}
 	
-	public String getQuestions() {
+	public String getQuestion() {
 		return question;
 	}
 	
