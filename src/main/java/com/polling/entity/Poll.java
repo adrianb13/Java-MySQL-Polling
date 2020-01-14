@@ -1,6 +1,5 @@
 package com.polling.entity;
 
-
 import java.time.Instant;
 import java.util.ArrayList;
 import java.util.List;
