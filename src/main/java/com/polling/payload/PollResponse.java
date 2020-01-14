@@ -54,7 +54,7 @@ public class PollResponse {
 		return creationDateTime;
 	}
 	
-	public void setCreationDateTIme(Instant creationDateTime) {
+	public void setCreationDateTime(Instant creationDateTime) {
 		this.creationDateTime = creationDateTime;
 	}
 	
