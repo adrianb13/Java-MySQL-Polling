@@ -16,10 +16,12 @@ import io.jsonwebtoken.SignatureAlgorithm;
 import io.jsonwebtoken.SignatureException;
 import io.jsonwebtoken.UnsupportedJwtException;
 
+//Generates JWT after successful login to allow user to access restricted areas/content.
 @Component
 public class JwtTokenProvider {
 	private static final Logger logger = LoggerFactory.getLogger(JwtTokenProvider.class);
 
+	// Following JWT Values listed in application.properties
 	@Value("${app.jwtSecret}")
 	private String jwtSecret;
 	

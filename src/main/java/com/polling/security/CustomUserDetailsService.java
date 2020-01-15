@@ -10,6 +10,7 @@ import org.springframework.transaction.annotation.Transactional;
 import com.polling.entity.User;
 import com.polling.repository.UserRepository;
 
+//Finds existing user based on UserPrincipal object (creates login details object) that includes username and email.
 @Service
 public class CustomUserDetailsService implements UserDetailsService {
 	

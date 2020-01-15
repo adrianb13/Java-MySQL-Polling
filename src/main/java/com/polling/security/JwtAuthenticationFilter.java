@@ -17,11 +17,14 @@ import org.springframework.security.web.authentication.WebAuthenticationDetailsS
 import org.springframework.util.StringUtils;
 import org.springframework.web.filter.OncePerRequestFilter;
 
+// Gets and validates JWT from authenticated user to send to Spring Security
 public class JwtAuthenticationFilter extends OncePerRequestFilter{
 
+	// Provides JWT
 	@Autowired
 	private JwtTokenProvider tokenProvider;
 	
+	// Provides User login details
 	@Autowired
 	private CustomUserDetailsService customUserDetailsService;
 	
@@ -30,8 +33,10 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter{
 	@Override
 	protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain) throws ServletException, IOException {
 		try {
+			// Parses JWT from request
 			String jwt = getJwtFromRequest(request);
 			
+			// Loads user info based on id from login request
 			if(StringUtils.hasText(jwt) && tokenProvider.validateToken(jwt)) {
 				Long userId = tokenProvider.getUserIdFromJWT(jwt);
 				

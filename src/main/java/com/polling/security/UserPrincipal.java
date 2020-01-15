@@ -12,6 +12,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.polling.entity.User;
 
+// Creates object based on User login detail based on user sign in for authentication.
 public class UserPrincipal implements UserDetails {
 	private Long id;
 	private String name;

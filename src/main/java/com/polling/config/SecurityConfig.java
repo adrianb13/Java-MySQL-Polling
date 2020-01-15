@@ -28,17 +28,21 @@ import com.polling.security.JwtAuthenticationFilter;
 		prePostEnabled = true
 )
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
+	// Used to find current user by username or email then loads user id if found.
 	@Autowired
 	CustomUserDetailsService customUserDetailsService;
 	
+	// Checks to see if user is authorized for sections of application
 	@Autowired
 	private JwtAuthenticationEntryPoint unauthorizedHandler;
 
+	// Validates JWT and loads user detail and role.
 	@Bean
 	public JwtAuthenticationFilter jwtAuthenticationFilter() {
 		return new JwtAuthenticationFilter();
 	}
 	
+	// Primary Spring Authentication. Uses user details and JWT for authentication for login.
 	@Override
 	public void configure(AuthenticationManagerBuilder authenticationManagerBuilder) throws Exception {
 		authenticationManagerBuilder
@@ -46,23 +50,26 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 			.passwordEncoder(passwordEncoder());
 	}
 	
+	// Used in the builder above to authenticate user.
 	@Bean(BeanIds.AUTHENTICATION_MANAGER)
 	@Override
 	public AuthenticationManager authenticationManagerBean() throws Exception {
 		return super.authenticationManagerBean();
 	}
 	
+	// Encodes password with JWT
 	@Bean 
 	public PasswordEncoder passwordEncoder() {
 		return new BCryptPasswordEncoder();
 	}
 	
+	// Http restrictions based on user authentication
 	@Override
   protected void configure(HttpSecurity http) throws Exception {
     http
-      .cors()
+      .cors() //Crosss-Origin Resource Sharing
          .and()
-      .csrf()
+      .csrf() //Cross-Site Request Forgery
          .disable()
       .exceptionHandling()
          .authenticationEntryPoint(unauthorizedHandler)
